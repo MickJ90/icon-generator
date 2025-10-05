@@ -1,0 +1,24 @@
+{
+    "name": "mickj/laravel-icon-generator",
+    "description": "Comando Artisan per convertire SVG in componenti Blade Laravel",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MickJ\\IconGenerator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MickJ\\IconGenerator\\IconGeneratorServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.1",
+        "illuminate/console": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0"
+    }
+}
