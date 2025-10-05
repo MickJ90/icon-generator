@@ -12,13 +12,120 @@ Puoi installare il pacchetto direttamente via **Composer**:
 
 ```bash
 composer require mickj/laravel-icon-generator
-<img width="633" height="470" alt="Screenshot 2025-10-05 alle 15 40 59" src="https://github.com/user-attachments/assets/a134c6ef-4dd6-4c4a-82b1-ae372526580f" />
+```
 
-<img width="655" height="469" alt="Screenshot 2025-10-05 alle 15 41 12" src="https://github.com/user-attachments/assets/6f08c98d-6805-4f99-bc27-6131c301c316" />
 
-<img width="655" height="537" alt="Screenshot 2025-10-05 alle 15 41 34" src="https://github.com/user-attachments/assets/a40cb926-43c5-413f-ac22-62462e089857" />
+⚙️ Utilizzo
 
-<img width="534" height="324" alt="Screenshot 2025-10-05 alle 15 41 58" src="https://github.com/user-attachments/assets/c5d9ebc5-0723-4896-a291-e042fa02f922" />
+1️⃣ Inserisci i tuoi file .svg nella cartella predefinita:
 
-<img width="656" height="324" alt="Screenshot 2025-10-05 alle 15 42 42" src="https://github.com/user-attachments/assets/16fc679a-faa8-4233-a051-534003fac546" />
+```bash
+resources/icons/
+```
 
+2️⃣ Esegui il comando Artisan:
+
+```bash
+php artisan icons:generate
+```
+3️⃣ Troverai le icone convertite qui:
+
+```bash
+resources/views/components/icons/
+```
+
+Ogni file verrà generato in formato:
+
+```bash
+<svg {{ $attributes->merge(['class' => 'inline']) }} ... >
+    ...
+</svg>
+```
+
+
+🧠 Esempio
+
+Se hai un file:
+
+```bash
+resources/icons/freccia.svg
+```
+
+verrà generato:
+
+```bash
+resources/views/components/icons/freccia.blade.php
+```
+
+E potrai usarlo direttamente in Blade:
+
+```bash
+<x.icons.freccia class="w-6 h-6 text-blue-500" />
+```
+
+
+🎨 Regole di conversione SVG
+
+Tutti i fill diversi da none → diventano currentColor
+
+Tutti i stroke diversi da none → diventano currentColor
+
+I tag <circle> non vengono alterati
+
+Il tag <svg> include automaticamente:
+
+```bash
+{{ $attributes->merge(['class' => 'inline']) }}
+```
+per integrarsi con Tailwind CSS
+
+
+🧩 Opzioni del comando
+
+Puoi specificare una cartella personalizzata:
+
+```bash
+php artisan icons:generate public/svg
+```
+
+In questo caso, le icone verranno prese da public/svg e salvate comunque in resources/views/components/icons.
+
+
+💾 Output di esempio
+
+```bash
+✔ Icona [freccia] generata.
+✔ Icona [profilo-utente] generata.
+✔ Icona [stella-piena] generata.
+Tutte le icone sono state generate in [resources/views/components/icons]
+```
+
+
+🧰 Compatibilità
+
+```bash
+| Laravel | Supporto |
+| ------- | -------- |
+| 8.x     | ✅        |
+| 9.x     | ✅        |
+| 10.x    | ✅        |
+| 11.x    | ✅        |
+| 12.x    | ✅        |
+```
+
+Richiede PHP ≥ 8.1
+
+
+🧑‍💻 Autore
+
+Michele Depalma
+```bash
+https://packagist.org/packages/mickj/laravel-icon-generator
+```
+
+
+📄 Licenza
+
+Rilasciato sotto licenza MIT
+.
+© 2025 Michele Depalma
