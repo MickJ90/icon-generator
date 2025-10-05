@@ -99,7 +99,7 @@ class GenerateIcons extends Command
 
         $this->info("Tutte le icone sono state generate in [$outputPath]");
 
-        $this->info("🧹 Rimozione automatica del pacchetto in corso...");
+        /* $this->info("🧹 Rimozione automatica del pacchetto in corso...");
 
         $composer = trim(shell_exec('which composer')) ?: base_path('composer.phar');
 
@@ -108,9 +108,9 @@ class GenerateIcons extends Command
             [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
             $pipes,
             base_path()
-        );
+        ); */
 
-        if (is_resource($process)) {
+        /* if (is_resource($process)) {
             $output = stream_get_contents($pipes[1]);
             $error = stream_get_contents($pipes[2]);
             fclose($pipes[1]);
@@ -122,6 +122,6 @@ class GenerateIcons extends Command
             } else {
                 $this->info("Pacchetto rimosso automaticamente.");
             }
-        }
+        } */
     }
 }
