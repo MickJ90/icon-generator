@@ -60,7 +60,7 @@ resources/views/components/icons/freccia.blade.php
 E potrai usarlo direttamente in Blade:
 
 ```bash
-<x.icons.freccia class="w-6 h-6 text-blue-500" />
+<x-icons.freccia class="w-6 h-6 text-blue-500" />
 ```
 
 
