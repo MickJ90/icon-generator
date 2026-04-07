@@ -10,14 +10,14 @@ class GenerateIcons extends Command
     protected $signature = 'icons:generate {path? : Cartella dove si trovano gli SVG (default: resources/icons)}';
     protected $description = 'Converte SVG in componenti Blade in resources/views/components/icons, con fill/stroke uniformati ma circle esclusi.';
 
-    public function handle()
+    public function handle(): int
     {
         $inputPath = $this->argument('path') ?? resource_path('icons');
         $outputPath = resource_path('views/components/icons');
 
         if (!File::exists($inputPath)) {
             $this->error("La cartella [$inputPath] non esiste.");
-            return;
+            return self::FAILURE;
         }
 
         if (!File::exists($outputPath)) {
@@ -27,7 +27,7 @@ class GenerateIcons extends Command
         $files = File::files($inputPath);
         if (empty($files)) {
             $this->warn("Nessun file SVG trovato in [$inputPath].");
-            return;
+            return self::SUCCESS;
         }
 
         foreach ($files as $file) {
@@ -123,5 +123,7 @@ class GenerateIcons extends Command
                 $this->info("Pacchetto rimosso automaticamente.");
             }
         } */
+
+        return self::SUCCESS;
     }
 }
